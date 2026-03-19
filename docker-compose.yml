@@ -1,0 +1,24 @@
+# PlanPal backend – local dev: PostgreSQL + optional migrate
+# Usage: docker compose up -d
+# Then: make migrate-up  (or run migrate from host)
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: planpal-db
+    environment:
+      POSTGRES_USER: planpal
+      POSTGRES_PASSWORD: planpal
+      POSTGRES_DB: planpal
+    ports:
+      - "5432:5432"
+    volumes:
+      - planpal_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U planpal -d planpal"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  planpal_pgdata:
