@@ -11,6 +11,3 @@ Designed to connect with the [PlanPal Flutter app](https://github.com/amandaekat
 - **JWT** for auth, optional OAuth
 - **WebSockets** for real-time updates (streaks, notifications)
 - **Docker** for local dev
-## License
-
-MIT
