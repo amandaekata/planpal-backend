@@ -21,6 +21,7 @@ import (
 	"github.com/amandaekata/planpal-backend/internal/ws"
 	"github.com/amandaekata/planpal-backend/middleware"
 	"github.com/gorilla/mux"
+	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/rs/cors"
 )
 
@@ -30,7 +31,7 @@ func main() {
 		log.Fatalf("config load: %v", err)
 	}
 
-	db, err := sql.Open("postgres", cfg.Database.URL)
+	db, err := sql.Open("pgx", cfg.Database.URL)
 	if err != nil {
 		log.Fatalf("db open: %v", err)
 	}
